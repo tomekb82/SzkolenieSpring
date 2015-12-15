@@ -1,0 +1,61 @@
+package pl.sages.spring.lab.model;
+
+import java.util.Collection;
+import java.util.LinkedHashSet;
+import java.util.Set;
+
+import javax.persistence.*;
+
+@Entity
+public class Category  extends BaseEntity {
+
+    @ManyToOne()
+    @JoinColumn(name = "parent_id")
+    private Category parent;
+
+    @OneToMany(mappedBy = "parent", orphanRemoval = true, cascade = CascadeType.ALL)
+    private Set<Category> children = new LinkedHashSet<>();
+
+    @ManyToMany(fetch = FetchType.LAZY, mappedBy="categories", cascade = CascadeType.ALL)
+    private Collection<Product> products;
+
+    private String name;
+    private String description;
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    public Category getParent() {
+        return parent;
+    }
+
+    public void setParent(Category parent) {
+        this.parent = parent;
+    }
+
+    public Set<Category> getChildren() {
+        return children;
+    }
+
+    public Category addChildCategory(Category child) {
+
+        child.setParent(this);
+        children.add(child);
+
+        return this;
+
+    }
+}
