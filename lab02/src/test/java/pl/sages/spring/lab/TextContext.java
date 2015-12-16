@@ -11,6 +11,7 @@ import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.test.context.transaction.TransactionConfiguration;
 
+import pl.sages.spring.lab.config.JavaConfig;
 import pl.sages.spring.lab.dao.CategoryDAO;
 import pl.sages.spring.lab.model.Category;
 
@@ -22,7 +23,7 @@ import java.util.List;
  * @author Adrian Lapierre {@literal <adrian@soft-fghgfdproject.pl>}
  */
 @RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration(locations = "/context.xml")
+@ContextConfiguration(classes = JavaConfig.class)//(locations = "/context.xml")
 @TransactionConfiguration(defaultRollback = true)
 public class TextContext {
 
