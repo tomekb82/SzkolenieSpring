@@ -1,12 +1,16 @@
 package pl.sages.spring.lab.config;
 
+import org.apache.commons.dbcp.BasicDataSource;
+import org.apache.commons.dbcp.managed.BasicManagedDataSource;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.Profile;
 import org.springframework.context.support.PropertySourcesPlaceholderConfigurer;
 import org.springframework.core.io.ClassPathResource;
 import org.springframework.core.io.Resource;
 import org.springframework.dao.annotation.PersistenceExceptionTranslationPostProcessor;
+import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 import org.springframework.jdbc.datasource.embedded.EmbeddedDatabaseBuilder;
 import org.springframework.jdbc.datasource.embedded.EmbeddedDatabaseType;
 import org.springframework.orm.jpa.JpaTransactionManager;
@@ -24,12 +28,13 @@ import java.util.Properties;
  */
 @Configuration
 @ComponentScan("pl.sages.spring.lab")
+@EnableJpaRepositories(basePackages = "pl.sages.spring.lab.dao")
 public class JavaConfig {
 
     @Bean
     public LocalContainerEntityManagerFactoryBean entityManagerFactory() {
         LocalContainerEntityManagerFactoryBean em = new LocalContainerEntityManagerFactoryBean();
-        em.setDataSource(dataSource());
+        em.setDataSource(dataSource2());
         em.setPackagesToScan(new String[] { "pl.sages.spring.lab.model" });
 
         JpaVendorAdapter vendorAdapter = new HibernateJpaVendorAdapter();
@@ -54,13 +59,14 @@ public class JavaConfig {
 
     Properties additionalProperties() {
         Properties properties = new Properties();
-        properties.setProperty("hibernate.hbm2ddl.auto", "create");
+        properties.setProperty("hibernate.hbm2ddl.auto", "update");
         properties.setProperty("hibernate.show_sql", "true");
         properties.setProperty("hibernate.format_sql", "true");
         return properties;
     }
 
     @Bean
+    @Profile("dev")
     public DataSource dataSource() {
         return new EmbeddedDatabaseBuilder()
                 .setType(EmbeddedDatabaseType.DERBY)
@@ -79,4 +85,17 @@ public class JavaConfig {
         p.setLocations(resourceLocations);
         return p;
     }
+
+    @Bean
+    @Profile("prod")
+    public DataSource dataSource2() {
+        BasicDataSource basicDataSource = new BasicDataSource();
+        basicDataSource.setDriverClassName("org.apache.derby.jdbc.ClientDriver");//${jdbc.driver}");
+        basicDataSource.setUrl("jdbc:derby://localhost:1527/crm;create=true");//${jdbc.url}");
+        basicDataSource.setUsername("sa");//${jdbc.username}");
+        basicDataSource.setPassword("sa");//${jdbc.password}");
+        return basicDataSource;
+    }
+
+
 }

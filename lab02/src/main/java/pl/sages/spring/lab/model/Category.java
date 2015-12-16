@@ -46,10 +46,6 @@ public class Category  extends BaseEntity {
         this.parent = parent;
     }
 
-    public Set<Category> getChildren() {
-        return children;
-    }
-
     public Category addChildCategory(Category child) {
 
         child.setParent(this);

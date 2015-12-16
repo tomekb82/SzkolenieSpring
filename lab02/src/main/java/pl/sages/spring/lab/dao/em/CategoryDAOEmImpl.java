@@ -1,7 +1,7 @@
 /**
  * Copyright 2015-12-15 the original author or authors.
  */
-package pl.sages.spring.lab.dao;
+package pl.sages.spring.lab.dao.em;
 
 import org.springframework.stereotype.Repository;
 
@@ -14,7 +14,7 @@ import javax.persistence.PersistenceContext;
  * @author Adrian Lapierre {@literal <adrian@soft-project.pl>}
  */
 @Repository
-public class CategoryDAOEmImpl implements CategoryDAO {
+public class CategoryDAOEmImpl implements CategoryEMDAO {
 
     @PersistenceContext
     private EntityManager em;

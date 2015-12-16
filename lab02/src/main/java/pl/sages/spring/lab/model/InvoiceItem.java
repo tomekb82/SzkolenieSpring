@@ -13,25 +13,22 @@ import javax.validation.constraints.Size;
 @Entity
 public class InvoiceItem extends BaseEntity{
 
-    @ManyToOne
+    @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "INVOICE_ID", nullable = false)
     private Invoice invoice;
 
-    @OneToOne
+    @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "PRODUCT_ID", nullable = false)
     private Product product;
 
     @NotNull
     private String name;
 
-    @NotNull
     @Min(1)
     private Integer quantity;
 
-    @NotNull
     private Integer price;
 
-    @Nullable
     private Integer discount;
 
 
@@ -81,5 +78,15 @@ public class InvoiceItem extends BaseEntity{
 
     public void setDiscount(Integer discount) {
         this.discount = discount;
+    }
+
+    @Override
+    public String toString() {
+        return "InvoiceItem{" +
+                ", name='" + name + '\'' +
+                ", quantity=" + quantity +
+                ", price=" + price +
+                ", discount=" + discount +
+                '}';
     }
 }

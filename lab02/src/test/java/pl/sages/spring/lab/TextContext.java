@@ -11,24 +11,26 @@ import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.test.context.transaction.TransactionConfiguration;
 
-import pl.sages.spring.lab.config.JavaConfig;
-import pl.sages.spring.lab.dao.CategoryDAO;
+import pl.sages.spring.lab.dao.em.CategoryEMDAO;
 import pl.sages.spring.lab.model.Category;
 
 import javax.transaction.Transactional;
-import java.util.ArrayList;
-import java.util.List;
 
 /**
- * @author Adrian Lapierre {@literal <adrian@soft-fghgfdproject.pl>}
+ * @author Adrian Lapierre {@literal <adrian@soft-project.pl>}
  */
 @RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration(classes = JavaConfig.class)//(locations = "/context.xml")
-@TransactionConfiguration(defaultRollback = true)
+@ContextConfiguration(locations = "/context.xml")
+@TransactionConfiguration(defaultRollback = false)
 public class TextContext {
 
     @Autowired
-    private CategoryDAO categoryDAO;
+    private CategoryEMDAO categoryEMDAO;
+
+    @Test
+    public void test() {
+        System.out.println("go.");
+    }
 
     @Test
     @Transactional
@@ -39,9 +41,11 @@ public class TextContext {
         category.setName("Kategoria 1");
         category.setDescription("Ala ma kota");
 
-        categoryDAO.save(category);
+        categoryEMDAO.save(category);
 
-        Category res = categoryDAO.load(category.getId());
+        System.out.println(category.getId());
+
+        Category res = categoryEMDAO.load(category.getId());
 
         assert res.getId() == category.getId();
 
@@ -51,10 +55,11 @@ public class TextContext {
     @Transactional
     public void saveTree() {
 
+
         Category category = new Category();
 
-        category.setName("Kategoria 2");
-        category.setDescription("Ala ma kota 2");
+        category.setName("Kategoria 1");
+        category.setDescription("Ala ma kota");
 
         Category child = new Category();
         child.setName("pod kategoria");
@@ -62,7 +67,8 @@ public class TextContext {
 
         category.addChildCategory(child);
 
-        categoryDAO.save(category);
+        categoryEMDAO.save(category);
+
 
     }
 

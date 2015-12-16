@@ -63,36 +63,27 @@ public class Product extends BaseEntity{
         this.prices = prices;
     }
 
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-
-        Product product = (Product) o;
-
-        if (stockCount != product.stockCount) return false;
-        if (catalogNumber != null ? !catalogNumber.equals(product.catalogNumber) : product.catalogNumber != null)
-            return false;
-        if (name != null ? !name.equals(product.name) : product.name != null) return false;
-        if (description != null ? !description.equals(product.description) : product.description != null) return false;
-        if (descriptionLink != null ? !descriptionLink.equals(product.descriptionLink) : product.descriptionLink != null)
-            return false;
-        if (prices != null ? !prices.equals(product.prices) : product.prices != null) return false;
-        if (categories != null ? !categories.equals(product.categories) : product.categories != null) return false;
-        return !(manufacturer != null ? !manufacturer.equals(product.manufacturer) : product.manufacturer != null);
-
+    public long getStockCount() {
+        return stockCount;
     }
 
-    @Override
-    public int hashCode() {
-        int result = catalogNumber != null ? catalogNumber.hashCode() : 0;
-        result = 31 * result + (name != null ? name.hashCode() : 0);
-        result = 31 * result + (description != null ? description.hashCode() : 0);
-        result = 31 * result + (descriptionLink != null ? descriptionLink.hashCode() : 0);
-        result = 31 * result + (int) (stockCount ^ (stockCount >>> 32));
-        result = 31 * result + (prices != null ? prices.hashCode() : 0);
-        result = 31 * result + (categories != null ? categories.hashCode() : 0);
-        result = 31 * result + (manufacturer != null ? manufacturer.hashCode() : 0);
-        return result;
+    public void setStockCount(long stockCount) {
+        this.stockCount = stockCount;
+    }
+
+    public Collection<Category> getCategories() {
+        return categories;
+    }
+
+    public void setCategories(Collection<Category> categories) {
+        this.categories = categories;
+    }
+
+    public Manufacturer getManufacturer() {
+        return manufacturer;
+    }
+
+    public void setManufacturer(Manufacturer manufacturer) {
+        this.manufacturer = manufacturer;
     }
 }

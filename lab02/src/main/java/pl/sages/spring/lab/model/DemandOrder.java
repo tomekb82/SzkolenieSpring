@@ -1,9 +1,6 @@
 package pl.sages.spring.lab.model;
 
-import javax.persistence.DiscriminatorValue;
-import javax.persistence.Entity;
-import javax.persistence.FetchType;
-import javax.persistence.ManyToOne;
+import javax.persistence.*;
 
 /**
  * Created by Administrator on 2015-12-15.
@@ -13,6 +10,7 @@ import javax.persistence.ManyToOne;
 public class DemandOrder extends Order{
 
     @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "supplier_id")
     private Supplier supplier;
 
     public Supplier getSupplier() {
@@ -23,5 +21,10 @@ public class DemandOrder extends Order{
         this.supplier = supplier;
     }
 
-
+    @Override
+    public String toString() {
+        return "DemandOrder{" +
+                "supplier=" + supplier +
+                '}';
+    }
 }

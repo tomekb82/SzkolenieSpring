@@ -39,4 +39,22 @@ public class Employee extends Person{
     public void setEmploymentEnd(Date employmentEnd) {
         this.employmentEnd = employmentEnd;
     }
+
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
+    }
+
+    @Override
+    public String toString() {
+        return "Employee{" +
+                "user=" + user +
+                ", salary=" + salary +
+                ", employmentStart=" + employmentStart +
+                ", employmentEnd=" + employmentEnd +
+                '}';
+    }
 }
