@@ -1,4 +1,4 @@
-package pl.sages.spring.lab;
+package pl.sages.spring.lab.model;
 
 import org.springframework.beans.factory.annotation.Qualifier;
 

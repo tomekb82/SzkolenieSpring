@@ -1,4 +1,4 @@
-package pl.sages.spring.lab;
+package pl.sages.spring.lab.service;
 
 import org.springframework.stereotype.Service;
 

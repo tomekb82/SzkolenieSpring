@@ -8,8 +8,8 @@
          http://www.springframework.org/schema/context/spring-context.xsd">
 
 
-    <context:component-scan base-package="pl.sages.spring"/>
-    <context:property-placeholder location="system.properties"/>
+    <context:component-scan base-package="pl.sages.spring.lab"/>
+    <context:property-placeholder location="system.properties, my.properties"/>
 
    <!-- <bean name="person" class="pl.sages.spring.lab.Person">
         <property name="name" value="Tomek"/>

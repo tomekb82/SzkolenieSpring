@@ -1,4 +1,4 @@
-package pl.sages.spring.lab;
+package pl.sages.spring.lab.model;
 
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.beans.factory.annotation.Value;
@@ -8,10 +8,10 @@ import org.springframework.stereotype.Component;
  * Created by Administrator on 2015-12-14.
  */
 @Component
-@Qualifier("advancedAddress2")
-public class AdvancedAddress2 implements IAddress{
+@Qualifier("basicAddress")
+public class BasicAddress implements IAddress {
 
-    @Value("#{'${cityAdvancedAddress2}'.toUpperCase()}")
+    @Value("#{'${cityBasicAddress}'.toUpperCase()}")
     String city;
     String street;
     Integer number;
@@ -42,7 +42,7 @@ public class AdvancedAddress2 implements IAddress{
 
     @Override
     public String toString() {
-        return "Address2{" +
+        return "Address{" +
                 "city='" + city + '\'' +
                 ", street='" + street + '\'' +
                 ", number=" + number +

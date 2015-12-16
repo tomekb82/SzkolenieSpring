@@ -1,6 +1,7 @@
-package pl.sages.spring.lab;
+package pl.sages.spring.lab.converters;
 
 import org.springframework.stereotype.Component;
+import pl.sages.spring.lab.model.BasicAddress;
 
 import java.beans.PropertyEditorSupport;
 
