@@ -1,4 +1,4 @@
-package pl.sages.spring.lab;
+package pl.sages.spring.lab.model;
 
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.beans.factory.annotation.Value;
@@ -10,7 +10,7 @@ import org.springframework.stereotype.Component;
 @Component
 @ExtendedAddress
 @Qualifier("advancedAddress")
-public class AdvancedAddress implements IAddress{
+public class AdvancedAddress implements IAddress {
 
     @Value("#{'${cityAdvancedAddress}'.toUpperCase()}")
     String city;

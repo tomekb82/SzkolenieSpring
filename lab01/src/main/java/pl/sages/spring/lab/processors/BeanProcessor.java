@@ -1,4 +1,4 @@
-package pl.sages.spring.lab;
+package pl.sages.spring.lab.processors;
 
 import org.springframework.beans.BeansException;
 import org.springframework.beans.factory.config.BeanPostProcessor;

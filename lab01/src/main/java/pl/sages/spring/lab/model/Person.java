@@ -1,7 +1,7 @@
 /**
  * Copyright 2015-12-14 the original author or authors.
  */
-package pl.sages.spring.lab;
+package pl.sages.spring.lab.model;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
@@ -18,6 +18,7 @@ import javax.annotation.PostConstruct;
 @Scope("singleton")
 public class Person {
 
+    @Value("${name}")
     private String name;
     private String lastName;
 

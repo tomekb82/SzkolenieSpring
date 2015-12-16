@@ -1,10 +1,11 @@
 /**
  * Copyright 2015-12-14 the original author or authors.
  */
-package pl.sages.spring.lab;
+package pl.sages.spring;
 
 import org.springframework.context.support.AbstractApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
+import pl.sages.spring.lab.model.Person;
 
 
 public class Application {
