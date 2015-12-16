@@ -10,6 +10,7 @@
     <modules>
         <module>lab01</module>
         <module>lab02</module>
+        <module>spring-aspect</module>
     </modules>
     <packaging>pom</packaging>
 
