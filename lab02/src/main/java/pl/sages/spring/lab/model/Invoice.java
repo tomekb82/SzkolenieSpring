@@ -22,12 +22,10 @@ import javax.validation.constraints.NotNull;
 @Entity
 public class Invoice extends BaseEntity{
 
-    @NotNull
-    @ManyToOne
+    @ManyToOne(cascade = CascadeType.ALL)
     private Contact seller;
 
-    @NotNull
-    @ManyToOne
+    @ManyToOne(cascade = CascadeType.ALL)
     private Contact buyer;
 
     @OneToMany(fetch = FetchType.LAZY, mappedBy = "invoice" , orphanRemoval = true, cascade = CascadeType.ALL)
@@ -88,5 +86,16 @@ public class Invoice extends BaseEntity{
 
         return this;
 
+    }
+
+    @Override
+    public String toString() {
+        return "Invoice{" +
+                "seller=" + seller +
+                ", buyer=" + buyer +
+                ", items=" + items +
+                ", paymentType=" + paymentType +
+                ", paymentDate=" + paymentDate +
+                '}';
     }
 }

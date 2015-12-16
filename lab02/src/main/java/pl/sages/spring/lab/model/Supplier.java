@@ -9,10 +9,8 @@ import javax.persistence.OneToOne;
  * Created by Administrator on 2015-12-15.
  */
 @Entity
-public class Supplier {
+public class Supplier extends BaseEntity {
 
-    @Id
-    private Long supplierId;
     private String name;
 
     @OneToOne
@@ -22,14 +20,6 @@ public class Supplier {
     private String ownerSuername;
     private String ownerPhoneNumber;
     private String ownerEmail;
-
-    public Long getSupplierId() {
-        return supplierId;
-    }
-
-    public void setSupplierId(Long supplierId) {
-        this.supplierId = supplierId;
-    }
 
     public String getName() {
         return name;
@@ -77,5 +67,17 @@ public class Supplier {
 
     public void setContact(Contact contact) {
         this.contact = contact;
+    }
+
+    @Override
+    public String toString() {
+        return "Supplier{" +
+                "name='" + name + '\'' +
+                ", contact=" + contact +
+                ", ownerName='" + ownerName + '\'' +
+                ", ownerSuername='" + ownerSuername + '\'' +
+                ", ownerPhoneNumber='" + ownerPhoneNumber + '\'' +
+                ", ownerEmail='" + ownerEmail + '\'' +
+                '}';
     }
 }

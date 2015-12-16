@@ -4,15 +4,15 @@ import javax.persistence.Entity;
 
 @Entity
 public class Manufacturer extends BaseEntity{
-    private String companyName;
+    private String name;
     private String location;
 
-    public String getCompanyName() {
-        return companyName;
+    public String getName() {
+        return name;
     }
 
-    public void setCompanyName(String companyName) {
-        this.companyName = companyName;
+    public void setName(String name) {
+        this.name = name;
     }
 
     public String getLocation() {
