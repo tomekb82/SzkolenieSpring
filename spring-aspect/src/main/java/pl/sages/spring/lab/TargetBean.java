@@ -3,7 +3,9 @@
  */
 package pl.sages.spring.lab;
 
+import org.springframework.stereotype.Component;
 
+@Component
 public class TargetBean implements NewInterface {
     
     @Override

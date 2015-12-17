@@ -5,12 +5,14 @@ package pl.sages.spring.lab;
 
 import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.EnableAspectJAutoProxy;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.AbstractJUnit4SpringContextTests;
 import pl.sages.spring.lab.NewInterface;
+import pl.sages.spring.lab.config.JavaConfig;
 
 
-@ContextConfiguration("/spring-context.xml")
+@ContextConfiguration(/*classes=JavaConfig.class)*/"/spring-context.xml")
 public class TestAspect extends AbstractJUnit4SpringContextTests {
     
     @Autowired

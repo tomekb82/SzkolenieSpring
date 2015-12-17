@@ -6,10 +6,13 @@ package pl.sages.spring.lab;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import org.aspectj.lang.ProceedingJoinPoint;
+import org.aspectj.lang.annotation.Around;
+import org.aspectj.lang.annotation.Aspect;
+import org.aspectj.lang.annotation.Pointcut;
 
 
 public class MyInterceptor {
-    
+
     public void intercept(ProceedingJoinPoint proceedingJoinPoint) {
         
         System.out.println("MyInterceptor: before method");
