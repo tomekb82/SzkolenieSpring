@@ -1,0 +1,30 @@
+<div class="well">
+    <h4>Wybrany użytkownik</h4>
+    <form class="form-inline new-user" name="usersController.userForm">
+        <div class="form-group">
+            <input name="first-name" type="text" class="form-control" placeholder="Imię"
+                ng-model="usersCtrl.currentUser.firstName">
+        </div>
+        <div class="form-group">
+            <input name="last-name" type="text" class="form-control" placeholder="Nazwisko"
+                   ng-model="usersCtrl.currentUser.lastName">
+        </div>
+        <div class="form-group">
+            <input name="email" type="text" class="form-control" placeholder="Adres email"
+                   ng-model="usersCtrl.currentUser.email">
+        </div>
+        <button type="submit" class="btn btn-default" ng-click="usersCtrl.save()">Zatwierdź</button>
+    </form>
+</div>
+
+<div class="panel panel-default" ng-repeat="user in usersCtrl.users" ng-click="usersCtrl.setCurrentUser(user)">
+    <div class="panel-heading">
+        <h4>{{ user.firstName }} {{ user.lastName }}</h4>
+    </div>
+    <div class="panel-body">
+        <a class="pull-right">
+            <span class="glyphicon glyphicon-remove" aria-hidden="true" ng-click="usersCtrl.delete(user)"></span>
+        </a>
+        <strong>Adres email: </strong>{{user.email}}
+    </div>
+</div>
