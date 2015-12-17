@@ -1,0 +1,19 @@
+{
+  "users": [
+    {
+      "firstName": "Jan",
+      "lastName": "Kowalski",
+      "email": "jan.kowalski@wp.pl"
+    },
+    {
+      "firstName": "Maria",
+      "lastName": "Nowak",
+      "email": "maria.nowak@wp.pl"
+    },
+    {
+      "firstName": "Adam",
+      "lastName": "Nowak",
+      "email": "adam.nowak@wp.pl"
+    }
+  ]
+}

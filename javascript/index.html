@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Szkolenie</title>
+    <link rel="stylesheet" href="assets/lib/bootstrap/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="assets/lib/bootstrap/dist/css/bootstrap-theme.min.css">
+    <script src="assets/lib/jquery/dist/jquery.min.js"></script>
+    <script src="assets/lib/bootstrap/dist/js/bootstrap.min.js"></script>
+    <script src="assets/lib/mustache.js/mustache.min.js"></script>
+    <script src="assets/js/core.js"></script>
+    <script src="assets/js/remote.js"></script>
+    <script src="assets/js/users.js"></script>
+
+
+    <script>
+        core.namespace('pl.training').test = function () {
+            console.log('ddd');
+        };
+
+        core.onReady(function () {
+            var trainingModule = core.namespace('pl.training');
+            trainingModule.test();
+
+            core.on(document.getElementById('myDiv'), 'click', function () {
+                console.log(this);
+                trainingModule.test();
+            }, {test: 'abc'});
+        });
+    </script>
+
+</head>
+<body>
+
+    <div id="myDiv" style="background-color: red; width: 200px; height: 200px;"></div>
+
+    <div class="container">
+        <table id="users" class="table">
+            <thead>
+                <tr>
+                    <th>Lp.</th>
+                    <th>Imię</th>
+                    <th>Nazwisko</th>
+                    <th>Email</th>
+                </tr>
+            </thead>
+            <tbody></tbody>
+        </table>
+    </div>
+    <script id="userTableBody" type="text/html">
+        {{#users}}
+            <tr>
+                <td>{{idx}}</td>
+                <td>{{firstName}}</td>
+                <td>{{lastName}}</td>
+                <td>{{email}}</td>
+            </tr>
+        {{/users}}
+    </script>
+</body>
+</html>
