@@ -12,7 +12,7 @@ import pl.sages.spring.lab.NewInterface;
 import pl.sages.spring.lab.config.JavaConfig;
 
 
-@ContextConfiguration(/*classes=JavaConfig.class)*/"/spring-context.xml")
+@ContextConfiguration(classes=JavaConfig.class)//"/spring-context.xml")
 public class TestAspect extends AbstractJUnit4SpringContextTests {
     
     @Autowired

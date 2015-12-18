@@ -1,10 +1,8 @@
 package pl.sages.spring.lab.config;
 
 import org.springframework.context.ApplicationContext;
-import org.springframework.context.annotation.AnnotationConfigApplicationContext;
-import org.springframework.context.annotation.ComponentScan;
-import org.springframework.context.annotation.Configuration;
-import org.springframework.context.annotation.EnableAspectJAutoProxy;
+import org.springframework.context.annotation.*;
+import pl.sages.spring.lab.MyAspect;
 import pl.sages.spring.lab.TargetBean;
 
 /**
@@ -15,10 +13,9 @@ import pl.sages.spring.lab.TargetBean;
 @EnableAspectJAutoProxy
 public class JavaConfig {
 
-    public static void main(String [] args){
-        ApplicationContext context = new AnnotationConfigApplicationContext(JavaConfig.class);
-        context.getBean(TargetBean.class).someMethod(0);
-
+    @Bean
+    public MyAspect myAspect(){
+        return new MyAspect();
     }
 
 }
